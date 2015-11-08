@@ -1,0 +1,25 @@
+{
+  "name": "order-automation",
+  "version": "1.0.0",
+  "description": "Automate PO",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mondiye/order-automation.git"
+  },
+  "keywords": [
+    "order"
+  ],
+  "author": "Rahul Ghose",
+  "license": "GPL",
+  "bugs": {
+    "url": "https://github.com/mondiye/order-automation/issues"
+  },
+  "homepage": "https://github.com/mondiye/order-automation",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
