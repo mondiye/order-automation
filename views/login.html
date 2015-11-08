@@ -1,23 +1,43 @@
 <html>
 <head>
+	<title>Login</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css" / >
 </head>
 <body>
 <div class="container">
-	<div class="page-header">
-	  <h1>Company name <small>some description</small></h1>
+	<div class="page-header" style="color:white;">
+	  <h1>Company name<br/><div style="color:white;font-size:0.5em;">some description</div></h1>
 	</div>
-	<div id="login_box" class="form" style="width: auto;background: transparent">
-		<form class="form-horizontal">
-			<div class="form-group">
-				<input name="username" type="text" class="form-control" placeholder="Enter your username">
-			</div>
-			<div class="form-group">
-				<input name="password" type="password" class="form-control" placeholder="Password">
-			</div>
-			<button type="submit" class="btn btn-primary">Login</button>
-		</form>
+	<div style-"width:80%">
+		<div id="login_box" class="form" style="width:auto;background:transparent;float:left;width:30%;margin-top:15%">
+			<% if (err) { %>
+				<div class="alert alert-error alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<strong>Error!</strong> <%= error_string %>	
+				</div>
+			<% } %>
+			<form method="POST" class="form-horizontal">
+				<div class="form-group">
+					<input name="username" type="text" class="form-control" placeholder="Enter your username">
+				</div>
+				<div class="form-group">
+					<input name="password" type="password" class="form-control" placeholder="Password">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Login</button>
+					&nbsp;&nbsp;&nbsp;<a style="color:white" href="#">Forgot password?</a>
+				</div>
+				
+			</form>
+		</div>
 	</div>
 </div>
+
+<footer class="footer">
+	<div class="container">
+		<p style="color:white" class="text-muted">Sample footer content.</p>
+	</div>
+</footer>
 </body>
 </html>
