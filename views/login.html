@@ -2,22 +2,48 @@
 <head>
 	<title>Login</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="style.css" / >
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+		function btnSelectUser_clicked(e) {
+			$("#user_select_login_box")[0].style.display = "none";
+			$("#login_box")[0].style.marginLeft -= 500;
+			$("#login_box")[0].style.marginRight += 500;
+			$("#login_box")[0].style.display = "block";
+			$("#login_box").animate({"margin-left": '+=500','margin-right': '-=500'});
+		}
+	</script>
 </head>
 <body>
 <div class="container">
 	<div class="page-header" style="color:white;">
 	  <h1>Company name<br/><div style="color:white;font-size:0.5em;">some description</div></h1>
 	</div>
-	<div style-"width:80%">
-		<div id="login_box" class="form" style="width:auto;background:transparent;float:left;width:30%;margin-top:15%">
+	<div style="width:auto;background:transparent;float:left;width:30%;margin-top:15%">
+		<div id="user_select_login_box">
+			<div>
+				<div class="form-group">
+					<select class="form-control">
+						<option value="user1">User type 1</option>
+						<option value="user2">User type 2</option>
+						<option value="user3">User type 3</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<button onclick="javascript:btnSelectUser_clicked();" class="btn btn-primary" id="btnSelectUser">
+						Select
+					</button>
+				</div>
+			</div>
+		</div>
+		<div id="login_box" style="display:none;">
 			<% if (err) { %>
 				<div class="alert alert-error alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<strong>Error!</strong> <%= error_string %>	
 				</div>
 			<% } %>
-			<form method="POST" class="form-horizontal">
+			<form id="loginForm" method="POST" class="form-horizontal">
 				<div class="form-group">
 					<input name="username" type="text" class="form-control" placeholder="Enter your username">
 				</div>
@@ -28,7 +54,6 @@
 					<button type="submit" class="btn btn-primary">Login</button>
 					&nbsp;&nbsp;&nbsp;<a style="color:white" href="#">Forgot password?</a>
 				</div>
-				
 			</form>
 		</div>
 	</div>
