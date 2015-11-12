@@ -11,3 +11,10 @@ body {
   /* Set the fixed height of the footer here */
   height: 60px;
 }
+
+video {
+  width: 307px;
+  height: 250px;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid #ccc;
+}

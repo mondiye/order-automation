@@ -3,14 +3,59 @@
 	<title>Home</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="style.css" / >
+	<script type="text/javascript">
+		function hasGetUserMedia() {
+			return !!(navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia);
+		}
+
+		function onLoad() {
+			if (hasGetUserMedia()) {
+				console.log("Good to go.")
+			}
+			else {
+			  alert('getUserMedia() is not supported in your browser');
+			  return;
+			}
+			var errorCallback = function(e) {
+			    console.log('Could not instantiate video!', e);
+			};
+
+			navigator.getUserMedia  = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+			var video = document.querySelector('video');
+
+			if (navigator.getUserMedia) {
+				navigator.getUserMedia(
+					{audio: false, video: true},
+					function(stream) {
+						video.src = window.URL.createObjectURL(stream);
+						setTimeout(function() {
+							video.width = 320;
+							video.height = 240;
+						}, 1000);
+					},
+					errorCallback
+				);
+			}
+			else {
+				console.log("fallback... 3")
+				video.src = 'somevideo.webm'; // fallback.
+			}
+		}
+	</script>
 </head>
-<body>
+<body onload="javascript:onLoad();">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+  <div class="navbar-header"><p class="navbar-text">Signed in as <%= userid %></p></div>
+    <div class="navbar-text">
+		<a href="./logout">Logout</a>
+    </div>
+  </div>
+</nav>
 <div class="container">
-	<h1>Welcome <%= userid %></h1>
-	<div>
-		<p>
-			<a style="color:white" href="./logout">Logout</a>
-		</p>
+	<div style="width: 50%; margin:0 auto;text-align: center;">
+		<video autoplay></video>
 	</div>
 </div>
 <footer class="footer">
